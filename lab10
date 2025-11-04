@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Лабораторная №10 — Модульность JS</title>
+</head>
+<body>
+  <main id="app"></main>
+
+  <!-- Подключаем главный JS-модуль -->
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
+
+// mathUtils.js
+export function percentOf(num, percent) {
+  return (num * percent) / 100;
+}
+
+export function addPercent(num, percent) {
+  return num + percentOf(num, percent);
+}
+
+export function subtractPercent(num, percent) {
+  return num - percentOf(num, percent);
+}
+
+// formatter.js
+export function formatNumber(value, decimals = 2) {
+  const n = Number(value);
+  if (Number.isNaN(n)) return 'NaN';
+  return n.toFixed(decimals);
+}
+
+export function formatResult(label, value) {
+  return `${label}: ${formatNumber(value, 2)}`;
+}
+
+// ui.js
+export function createAppRoot() {
+  const app = document.getElementById('app');
+
+  app.innerHTML = `
+    <h2>Лабораторная №10 — Модульность JS</h2>
+    <form id="calcForm">
+      <label>Число: <input type="number" id="inputNumber" value="200" step="any" /></label>
+      <label style="margin-left:10px;">Процент: <input type="number" id="inputPercent" value="15" step="any" /></label>
+      <button type="submit">Посчитать</button>
+    </form>
+    <section id="results" style="margin-top:12px;"></section>
+  `;
+
+  return {
+    form: document.getElementById('calcForm'),
+    inputNumber: document.getElementById('inputNumber'),
+    inputPercent: document.getElementById('inputPercent'),
+    results: document.getElementById('results')
+  };
+}
+
+export function showResults(container, lines = []) {
+  container.innerHTML = lines.map(line => `<p>${line}</p>`).join('');
+}
+
+// main.js
+import { percentOf, addPercent, subtractPercent } from './mathUtils.js';
+import { formatResult } from './formatter.js';
+import { createAppRoot, showResults } from './ui.js';
+
+const { form, inputNumber, inputPercent, results } = createAppRoot();
+
+renderResults(Number(inputNumber.value), Number(inputPercent.value));
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const num = Number(inputNumber.value);
+  const percent = Number(inputPercent.value);
+  renderResults(num, percent);
+});
+
+function renderResults(num, percent) {
+  const r1 = percentOf(num, percent);
+  const r2 = addPercent(num, percent);
+  const r3 = subtractPercent(num, percent);
+
+  const lines = [
+    formatResult(`${percent}% от числа ${num}`, r1),
+    formatResult(`${num} + ${percent}%`, r2),
+    formatResult(`${num} - ${percent}%`, r3)
+  ];
+
+  showResults(results, lines);
+}
