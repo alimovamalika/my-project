@@ -1,0 +1,13 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+}
+
+.controls input {
+    margin-right: 10px;
+}
+
+button {
+    margin-right: 10px;
+}
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Работа с коллекцией</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Коллекция элементов</h1>
+
+    <div class="controls">
+        <input id="itemInput" placeholder="Введите элемент">
+        <button onclick="addItem()">Добавить</button>
+
+        <input id="searchInput" placeholder="Поиск...">
+        <button onclick="searchItem()">Искать</button>
+
+        <button onclick="sortItems()">Сортировать</button>
+    </div>
+
+    <h2>Все элементы:</h2>
+    <ul id="itemList"></ul>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
