@@ -1,0 +1,12 @@
+{
+    "name": "lab14",
+    "version": "1.0.0",
+    "description": "Тестирование и отладка JS функций",
+    "scripts": {
+      "test": "jest"
+    },
+    "devDependencies": {
+      "jest": "^29.5.0"
+    }
+  }
+  
