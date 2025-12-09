@@ -1,0 +1,11 @@
+function TaskList({ tasks, removeTask }) {
+  return (
+    <ul>
+      {tasks.map((t, i) => (
+        <li key={i}>
+          {t} <button onClick={() => removeTask(i)}>Удалить</button>
+        </li>
+      ))}
+    </ul>
+  );
+}
