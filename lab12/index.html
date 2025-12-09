@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Лаборатория 12 — Аутентификация и JWT (демо)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <section id="login-section" class="card">
+      <h1>Вход</h1>
+      <form id="login-form">
+        <label>
+          E-mail
+          <input type="email" id="email" required placeholder="user@example.com" />
+        </label>
+        <label>
+          Пароль
+          <input type="password" id="password" required placeholder="пароль" />
+        </label>
+        <div class="row">
+          <button type="submit">Войти</button>
+          <button type="button" id="fill-test">Автозаполнение</button>
+        </div>
+      </form>
+      <p class="note">Это учебный пример — токен фейковый, без серверной подписи.</p>
+    </section>
+
+    <section id="protected-section" class="card hidden">
+      <h1>Личный кабинет</h1>
+      <p>Вы вошли как: <strong id="user-email"></strong></p>
+      <p>Токен (сокращённо): <code id="token-preview"></code></p>
+      <div class="row">
+        <button id="logout">Выход</button>
+        <button id="show-decoded">Показать payload</button>
+      </div>
+      <pre id="decoded" class="hidden"></pre>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
