@@ -1,0 +1,34 @@
+function App() {
+  const [tasks, setTasks] = React.useState([]);
+
+  const addTask = (text) => setTasks([...tasks, text]);
+  const removeTask = (index) => setTasks(tasks.filter((_, i) => i !== index));
+
+  return (
+    <div style={{ padding: 20 }}>
+      <h2>Список задач</h2>
+      <TaskForm addTask={addTask} />
+      <TaskList tasks={tasks} removeTask={removeTask} />
+    </div>
+  );
+}
+
+4. Код файла TaskForm.js:
+
+function TaskForm({ addTask }) {
+  const [text, setText] = React.useState('');
+
+  return (
+    <div>
+      <input
+        type="text"
+        placeholder="Новая задача..."
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      />
+      <button onClick={() => { addTask(text); setText(''); }}>
+        Добавить
+      </button>
+    </div>
+  );
+}
