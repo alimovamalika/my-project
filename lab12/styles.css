@@ -1,0 +1,49 @@
+:root{
+    font-family: Arial, Helvetica, sans-serif;
+    --card-bg: #ffffff;
+    --page-bg: #f2f4f7;
+    --accent: #2b6cb0;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    padding:20px;
+    background:var(--page-bg);
+    color:#111;
+  }
+  .container{
+    max-width:720px;
+    margin:30px auto;
+  }
+  .card{
+    background:var(--card-bg);
+    padding:18px;
+    border-radius:8px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    margin-bottom:16px;
+  }
+  .hidden{display:none}
+  h1{margin:0 0 12px 0;font-size:20px}
+  label{display:block;margin:8px 0}
+  input[type="email"], input[type="password"]{
+    width:100%;
+    padding:8px 10px;
+    margin-top:6px;
+    border:1px solid #ccd6e2;
+    border-radius:6px;
+    font-size:14px;
+  }
+  .row{display:flex;gap:8px;margin-top:12px}
+  button{
+    padding:8px 14px;
+    border-radius:6px;
+    border:0;
+    background:var(--accent);
+    color:white;
+    cursor:pointer;
+    font-weight:600;
+  }
+  button#fill-test{background:#718096;color:white}
+  .note{font-size:12px;color:#6b7280;margin-top:10px}
+  pre{background:#f8fafc;padding:10px;border-radius:6px;border:1px solid #e6edf3;overflow:auto}
+  code{display:inline-block; max-width:100%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
